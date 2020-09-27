@@ -10,9 +10,9 @@ export class CheckerService {
   }
 
   async problemIsSolved(): Promise<boolean> {
-    const data = await this.connexion.get('https://www.codewars.com/api/v1/users/mejdi/code-challenges/completed').pipe(
-      map(response => response.data.data[0].completedAt));
-    if (!data)
+    const data =  await this.connexion.get('https://www.codewars.com/api/v1/users/mejdi/code-challenges/completed').pipe(
+      map(response => response.data.data[0].completedAt)).toPromise();
+    if (data)
       return this.checkIfLastDateIsToday(data)
     else
     return false
@@ -22,6 +22,5 @@ export class CheckerService {
     const inputDate = new Date(data);
     const todaysDate = new Date();
     return (inputDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0))
-
   }
 }

@@ -17,8 +17,8 @@ let CheckerService = class CheckerService {
         this.connexion = connexion;
     }
     async problemIsSolved() {
-        const data = await this.connexion.get('https://www.codewars.com/api/v1/users/mejdi/code-challenges/completed').pipe(operators_1.map(response => response.data.data[0].completedAt));
-        if (!data)
+        const data = await this.connexion.get('https://www.codewars.com/api/v1/users/mejdi/code-challenges/completed').pipe(operators_1.map(response => response.data.data[0].completedAt)).toPromise();
+        if (data)
             return this.checkIfLastDateIsToday(data);
         else
             return false;
