@@ -11,5 +11,7 @@ export class RedirectionController {
     const result: boolean = await this.checkerService.problemIsSolved()
     if (result)
       return res.redirect('https://www.youtube.com/');
+    else
+      return res.redirect('https://codewars-blocking-cat.herokuapp.com/');
   }
 }

@@ -21,7 +21,7 @@ let CheckerService = class CheckerService {
         if (!data)
             return this.checkIfLastDateIsToday(data);
         else
-            return true;
+            return false;
     }
     checkIfLastDateIsToday(data) {
         const inputDate = new Date(data);

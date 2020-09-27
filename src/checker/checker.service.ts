@@ -15,7 +15,7 @@ export class CheckerService {
     if (!data)
       return this.checkIfLastDateIsToday(data)
     else
-    return true
+    return false
   }
 
   private checkIfLastDateIsToday(data: any) {
