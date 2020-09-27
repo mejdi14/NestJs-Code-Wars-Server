@@ -1,12 +1,19 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Res } from '@nestjs/common';
 import { CheckerService } from './checker.service';
+import { Observable } from 'rxjs';
+import { CodeWarsData } from './data';
 
 @Controller('checker')
 export class CheckerController {
   constructor(private checkerService: CheckerService){
   }
   @Get()
-  findAll(): any {
-    return this.checkerService.create();
+  findAll(): Promise<boolean> {
+    return this.checkerService.problemIsSolved()
+  }
+
+  @Get()
+  redirect(@Res() res) {
+    return res.redirect('/books/greet');
   }
 }
