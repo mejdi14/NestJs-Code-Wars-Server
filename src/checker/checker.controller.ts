@@ -12,8 +12,4 @@ export class CheckerController {
     return this.checkerService.problemIsSolved()
   }
 
-  @Get()
-  redirect(@Res() res) {
-    return res.redirect('/books/greet');
-  }
 }
